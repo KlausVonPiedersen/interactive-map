@@ -1,6 +1,97 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; 
+    color: #fff; 
+    display: flex;
+    flex-direction: column; 
+}
+
 #map {
-    height: 600px;
-    width: 80%;
-    margin: 20px auto;
-    border: 2px solid #333;
+    flex-grow: 1;
+    background-color: #000; 
+    margin-top: 60px;
+}
+
+h1 {
+    position: fixed; 
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    z-index: 100; 
+    letter-spacing: 2px;
+    padding: 10px;
+    background-color: #1e1e1e; 
+    width: 100%;
+    text-align: center;
+}
+
+
+footer {
+    background-color: #1c1c1c; 
+    color: #bbbbbb; 
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+footer p {
+    line-height: 1.6;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+}
+
+a, button {
+    color: #3498db; 
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover, button:hover {
+    color: #1abc9c; 
+}
+
+.leaflet-tooltip {
+    background-color: #333; 
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.leaflet-polyline {
+    color: #3498db;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    footer {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+    
+    #map {
+        flex-grow: 1;
+        margin-top: 60px;
+    }
 }
