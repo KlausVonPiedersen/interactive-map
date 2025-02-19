@@ -76,6 +76,20 @@ a:hover, button:hover {
     border-radius: 3px;
 }
 
+.leaflet-popup-content-wrapper {
+    background: rgba(20, 20, 20, 0.9) !important;
+    color: white !important; 
+    border-radius: 10px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.leaflet-popup-tip {
+    background: rgba(20, 20, 20, 0.9) !important; /* Match background */
+    border: none !important;
+}
+
+
 .leaflet-polyline {
     color: #3498db;
 }

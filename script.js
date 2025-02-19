@@ -14,10 +14,72 @@ const imageBounds = [
     [imageHeight, imageWidth]
 ];
 
+const specialIcons = {
+    gargoyle_icon: L.icon({
+        iconUrl: 'gargoyle_icon.png',
+        iconSize: [64, 64],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    }),
+    squire_icon: L.icon({
+        iconUrl: 'squire_icon.png',
+        iconSize: [64, 64],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    })
+};
 
 L.imageOverlay('map.png', imageBounds).addTo(map);
 
 map.fitBounds(imageBounds);
+
+const specialMarkers = [
+    { coords: [imageHeight - 3180, 3715], name: "Moulding Meadows Squire", img: "moulding_meadows_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3610, 3567], name: "Fungal Village Squire", img: "fungal_village_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3929, 1859], name: "Redtown Proper Squire", img: "redtown_proper_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 5772, 1358], name: "Gaoler's Gulf Squire", img: "gaolers_gulf_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 4913, 1685], name: "Redcrown Woods Squire", img: "redcrown_woods_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 4568, 1365], name: "Waterdale Squire", img: "waterdale_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3462, 1826], name: "Treehouse Bastion Squire", img: "treehouse_bastion.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 2486, 1792], name: "Drainage Ruins Squire", img: "drainage_ruins_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1663, 1895], name: "Throne sewers Squire", img: "throne_sewers_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1000, 1775], name: "Uptown Outskirts Squire", img: "uptown_outskirts_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 5285, 3450], name: "Bogjaw Chasm Squire", img: "bogjaw_chasm_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 2657, 3745], name: "Tripe's Landing Squire", img: "tripes_landing_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1885, 3652], name: "Rabenousse's Ramparts Squire", img: "rabenousses_ramparts_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1395, 3441], name: "Feast Halls Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon },
+
+    { coords: [imageHeight - 3146, 3656], name: "Fungal Fields Gargoyle", img: "fungal_fields_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 3700, 1596], name: "Vacant Tower Gargoyle", img: "vacant_tower_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 2399, 1700], name: "Drainage Ruins Gargoyle", img: "drainage_ruins_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 5054, 3600], name: "Blackbeak Knoll Gargoyle", img: "blackbeack_knoll_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 4860, 3460], name: "Gurgling Gorge Gargoyle", img: "gurgling_gorge_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 3690, 3690], name: "Fungal Village Gargoyle", img: "fungal_village_gargoyle.png", icon: specialIcons.gargoyle_icon },
+];
+
+specialMarkers.forEach(({ coords, name, img, icon }) => {
+    const marker = L.marker(coords, { icon }).addTo(map);
+
+    const popupContent = `
+        <div>
+            <img src="${img}" style="width: 500px; height: auto; border-radius: 20px;"><br><b>${name}</b>
+        </div>
+    `;
+    
+    marker.bindTooltip(name, { permanent: false, direction: 'top' });
+
+    marker.bindPopup(popupContent, {
+        maxWidth: 520,
+    });
+
+    marker.on("click", function () {
+        this.openPopup();
+    });
+
+    marker.on("popupclose", function () {
+        this.bindTooltip(name, { permanent: false, direction: 'top' });
+    });
+});
 
 const markers = {
     mangrove: { coords: [imageHeight - 5675, 1896], name: "Mangrove Pits" },
@@ -49,57 +111,75 @@ const markers = {
     high_order_encampment: { coords: [imageHeight - 1950, 2226], name: "High Order Encampment" },
     throne_sewers: { coords: [imageHeight - 1487, 2030], name: "Throne Sewers" },
     outskirts_well: { coords: [imageHeight - 1078, 1927], name: "Outskirts Well" },
-    uptown_gates: { coords: [imageHeight - 445, 1760], name: "Uptown Gates" }
+    uptown_gates: { coords: [imageHeight - 445, 1760], name: "Uptown Gates" },
+    crownway_red: { coords: [imageHeight - 4000, 3033], name: "Crownway" },
+    redtown_proper: { coords: [imageHeight - 3911, 2213], name: "Redcrown Proper" },
+};
+
+const createCustomIcon = (color) => {
+    return L.divIcon({
+        className: 'custom-icon',
+        html: `<div class="marker-icon" style="background-color: ${color}; border-radius: 50%; width: 30px; height: 30px;"></div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 15],
+        popupAnchor: [0, -20]
+    });
 };
 
 Object.entries(markers).forEach(([key, { coords, name }]) => {
-    markers[key].marker = L.marker(coords).addTo(map)
+    let color = 'blue'; // Default color
+    if (key.includes('red')) color = 'red'; 
+
+    markers[key].marker = L.marker(coords, { icon: createCustomIcon(color) }).addTo(map)
         .bindTooltip(name, { permanent: false, direction: 'top' });
 });
 
 const paths = [
-    { from: "gurgling_tower", to: "gurgling_gorge_upper" },
-    { from: "mangrove", to: "boglink_shrine" },
-    { from: "mangrove", to: "mr_uncles_house" },
-    { from: "boglink_shrine", to: "boglink_monastary" },
-    { from: "boglink_monastary", to: "gurgling_gorge" },
-    { from: "gurgling_gorge", to: "gurgling_tower" },
-    { from: "gurgling_gorge", to: "gurgling_gorge_upper" },
-    { from: "gurgling_gorge", to: "graveway" },
-    { from: "graveway", to: "deaths_door" },
-    { from: "deaths_door", to: "graveyard_basin" },
-    { from: "gurgling_tower", to: "central_gurglevale" },
-    { from: "central_gurglevale", to: "guttergap_gully" },
-    { from: "guttergap_gully", to: "cave_of_glee" },
-    { from: "guttergap_gully", to: "grand_aqueduct_crossing" },
-    { from: "grand_aqueduct_crossing", to: "fungal_fields" },
-    { from: "fungal_fields", to: "fortress_of_the_famished" },
-    { from: "fortress_of_the_famished", to: "mcshickens_bulwark" },
-    { from: "mcshickens_bulwark", to: "fat_black" },
-    { from: "mcshickens_bulwark", to: "gnoddricks_belfry" },
-    { from: "mr_uncles_house", to: "waterdale" },
-    { from: "waterdale", to: "twopond_clearing" },
-    { from: "twopond_clearing", to: "leftwood_ruins_head" },
-    { from: "twopond_clearing", to: "treehouse_keep" },
-    { from: "twopond_clearing", to: "kingswood" },
-    { from: "kingswood", to: "encampment_approach" },
-    { from: "encampment_approach", to: "high_order_encampment" },
-    { from: "encampment_approach", to: "drainage_ruins" },
-    { from: "drainage_ruins", to: "throne_sewers" },
-    { from: "throne_sewers", to: "outskirts_well" },
-    { from: "outskirts_well", to: "uptown_gates" }
+    { from: "gurgling_tower", to: "gurgling_gorge_upper", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "mangrove", to: "boglink_shrine", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "mangrove", to: "mr_uncles_house", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "boglink_shrine", to: "boglink_monastary", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "boglink_monastary", to: "gurgling_gorge", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "gurgling_gorge", to: "gurgling_tower", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "gurgling_gorge", to: "gurgling_gorge_upper", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "gurgling_gorge", to: "graveway", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "graveway", to: "deaths_door", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "deaths_door", to: "graveyard_basin", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "gurgling_tower", to: "central_gurglevale", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "central_gurglevale", to: "guttergap_gully", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "guttergap_gully", to: "cave_of_glee", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "guttergap_gully", to: "grand_aqueduct_crossing", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "grand_aqueduct_crossing", to: "fungal_fields", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "fungal_fields", to: "fortress_of_the_famished", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "fortress_of_the_famished", to: "mcshickens_bulwark", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "mcshickens_bulwark", to: "fat_black", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "mcshickens_bulwark", to: "gnoddricks_belfry", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "mr_uncles_house", to: "waterdale", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "waterdale", to: "twopond_clearing", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "twopond_clearing", to: "leftwood_ruins_head", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "twopond_clearing", to: "treehouse_keep", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "treehouse_keep", to: "kingswood", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "kingswood", to: "encampment_approach", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "encampment_approach", to: "drainage_ruins", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "drainage_ruins", to: "high_order_encampment", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "high_order_encampment", to: "throne_sewers", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "throne_sewers", to: "outskirts_well", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "outskirts_well", to: "uptown_gates", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "uptown_gates", to: "crownway", lineColor: 'blue', lineStyle: '5, 5' },
+    { from: "crownway_red", to: "redtown_proper", lineColor: 'red', lineStyle: '5, 5' },
 ];
 
-paths.forEach(({ from, to }) => {
+paths.forEach(({ from, to, lineColor, lineStyle }) => {
     if (markers[from] && markers[to]) {
         L.polyline(
             [markers[from].marker.getLatLng(), markers[to].marker.getLatLng()],
             {
-                color: '#00f',
+                color: lineColor,
                 weight: 2,
                 opacity: 0.8,
-                dashArray: '5, 5'
+                dashArray: lineStyle
             }
         ).addTo(map);
     }
 });
+
