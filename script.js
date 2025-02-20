@@ -49,6 +49,7 @@ const specialMarkers = [
     { coords: [imageHeight - 2657, 3745], name: "Tripe's Landing Squire", img: "tripes_landing_squire.png", icon: specialIcons.squire_icon },
     { coords: [imageHeight - 1885, 3652], name: "Rabenousse's Ramparts Squire", img: "rabenousses_ramparts_squire.png", icon: specialIcons.squire_icon },
     { coords: [imageHeight - 1395, 3441], name: "Feast Halls Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3285, 2909], name: "False King's Crag Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon }, // Needs a screenshot aswell but i cant be bothered booting the game rn :)
 
     { coords: [imageHeight - 3700, 1596], name: "Vacant Tower Gargoyle", img: "vacant_tower_gargoyle.png", icon: specialIcons.gargoyle_icon },
     { coords: [imageHeight - 2399, 1700], name: "Drainage Ruins Gargoyle", img: "drainage_ruins_gargoyle.png", icon: specialIcons.gargoyle_icon },
