@@ -21,13 +21,13 @@ map.fitBounds(imageBounds);
 
 const specialIcons = {
     gargoyle_icon: L.icon({
-        iconUrl: 'gargoyle_icon.png',
+        iconUrl: 'gargoyle_icon.webp',
         iconSize: [64, 64],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32]
     }),
     squire_icon: L.icon({
-        iconUrl: 'squire_icon.png',
+        iconUrl: 'squire_icon.webp',
         iconSize: [64, 64],
         iconAnchor: [16, 32],
         popupAnchor: [0, -32]
@@ -35,28 +35,28 @@ const specialIcons = {
 };
 
 const specialMarkers = [
-    { coords: [imageHeight - 3180, 3715], name: "Moulding Meadows Squire", img: "moulding_meadows_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 3610, 3567], name: "Fungal Village Squire", img: "fungal_village_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 3929, 1859], name: "Redtown Proper Squire", img: "redtown_proper_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 5772, 1358], name: "Gaoler's Gulf Squire", img: "gaolers_gulf_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 4913, 1685], name: "Redcrown Woods Squire", img: "redcrown_woods_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 4568, 1365], name: "Waterdale Squire", img: "waterdale_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 3462, 1826], name: "Treehouse Bastion Squire", img: "treehouse_bastion_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 2486, 1792], name: "Drainage Ruins Squire", img: "drainage_ruins_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 1663, 1895], name: "Throne sewers Squire", img: "throne_sewers_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 1000, 1775], name: "Uptown Outskirts Squire", img: "uptown_outskirts_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 5285, 3450], name: "Bogjaw Chasm Squire", img: "bogjaw_chasm_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 2657, 3745], name: "Tripe's Landing Squire", img: "tripes_landing_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 1885, 3652], name: "Rabenousse's Ramparts Squire", img: "rabenousses_ramparts_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 1395, 3441], name: "Feast Halls Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon },
-    { coords: [imageHeight - 3285, 2909], name: "False King's Crag Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon }, // Needs a screenshot aswell but i cant be bothered booting the game rn :)
-    { coords: [imageHeight - 4265, 4856], name: "Crypt Hill Squire", img: "feast_halls_squire.png", icon: specialIcons.squire_icon }, // Needs a screenshot aswell but i cant be bothered booting the game rn :)
+    { coords: [imageHeight - 3180, 3715], name: "Moulding Meadows Squire", img: "moulding_meadows_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3610, 3567], name: "Fungal Village Squire", img: "fungal_village_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3929, 1859], name: "Redtown Proper Squire", img: "redtown_proper_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 5772, 1358], name: "Gaoler's Gulf Squire", img: "gaolers_gulf_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 4913, 1685], name: "Redcrown Woods Squire", img: "redcrown_woods_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 4568, 1365], name: "Waterdale Squire", img: "waterdale_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3462, 1826], name: "Treehouse Bastion Squire", img: "treehouse_bastion_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 2486, 1792], name: "Drainage Ruins Squire", img: "drainage_ruins_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1663, 1895], name: "Throne sewers Squire", img: "throne_sewers_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1000, 1775], name: "Uptown Outskirts Squire", img: "uptown_outskirts_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 5285, 3450], name: "Bogjaw Chasm Squire", img: "bogjaw_chasm_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 2657, 3745], name: "Tripe's Landing Squire", img: "tripes_landing_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1885, 3652], name: "Rabenousse's Ramparts Squire", img: "rabenousses_ramparts_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 1395, 3441], name: "Feast Halls Squire", img: "feast_halls_squire.webp", icon: specialIcons.squire_icon },
+    { coords: [imageHeight - 3285, 2909], name: "False King's Crag Squire", img: "feast_halls_squire.webp", icon: specialIcons.squire_icon }, // Needs a screenshot aswell but i cant be bothered booting the game rn :)
+    { coords: [imageHeight - 4265, 4856], name: "Crypt Hill Squire", img: "feast_halls_squire.webp", icon: specialIcons.squire_icon }, // Needs a screenshot aswell but i cant be bothered booting the game rn :)
 
-    { coords: [imageHeight - 3700, 1596], name: "Vacant Tower Gargoyle", img: "vacant_tower_gargoyle.png", icon: specialIcons.gargoyle_icon },
-    { coords: [imageHeight - 2399, 1700], name: "Drainage Ruins Gargoyle", img: "drainage_ruins_gargoyle.png", icon: specialIcons.gargoyle_icon },
-    { coords: [imageHeight - 5054, 3600], name: "Blackbeak Knoll Gargoyle", img: "blackbeack_knoll_gargoyle.png", icon: specialIcons.gargoyle_icon },
-    { coords: [imageHeight - 4860, 3460], name: "Gurgling Gorge Gargoyle", img: "gurgling_gorge_gargoyle.png", icon: specialIcons.gargoyle_icon },
-    { coords: [imageHeight - 3690, 3690], name: "Fungal Village Gargoyle", img: "fungal_village_gargoyle.png", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 3700, 1596], name: "Vacant Tower Gargoyle", img: "vacant_tower_gargoyle.webp", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 2399, 1700], name: "Drainage Ruins Gargoyle", img: "drainage_ruins_gargoyle.webp", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 5054, 3600], name: "Blackbeak Knoll Gargoyle", img: "blackbeack_knoll_gargoyle.webp", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 4860, 3460], name: "Gurgling Gorge Gargoyle", img: "gurgling_gorge_gargoyle.webp", icon: specialIcons.gargoyle_icon },
+    { coords: [imageHeight - 3690, 3690], name: "Fungal Village Gargoyle", img: "fungal_village_gargoyle.webp", icon: specialIcons.gargoyle_icon },
 ];
 
 specialMarkers.forEach(({ coords, name, img, icon }) => {
